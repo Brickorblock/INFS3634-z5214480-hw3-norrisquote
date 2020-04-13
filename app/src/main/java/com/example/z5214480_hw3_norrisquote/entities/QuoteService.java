@@ -9,7 +9,10 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
+//interface for API call
 public interface QuoteService {
+    // uses random as the API ticker to generate random quote
     @GET("random")
+    //accepts a parameter to query for specific category (i.e. Dev)
     Call<QuoteResponse> getQuote(@Query("category") String category);
 }

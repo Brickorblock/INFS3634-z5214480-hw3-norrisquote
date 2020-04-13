@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         chuckButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // set to a filler text while the quote is loading
                 quoteText.setText("Fetching quote...");
                 setQuote();
             }
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         QuoteService service = retrofit.create(QuoteService.class);
         Call<QuoteResponse> call = service.getQuote("dev");
 
+        // use enqueue to handle execution
         call.enqueue(new Callback<QuoteResponse>() {
             @Override
             public void onResponse(Call<QuoteResponse> call, Response<QuoteResponse> response) {
